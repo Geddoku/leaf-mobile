@@ -67,10 +67,8 @@ const RegistrationForm = props => {
         <TouchableOpacity data={{name:props.name, email:props.email, password: props.password}} style={regStyle.button}>
           <Text style={regStyle.buttonText}>Register</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={regStyle.registerRedirect}>
-          <Text
-            style={regStyle.registerRedirectBtn}
-            onPress={() => props.navigation.navigate('SignUp')}>Already have an account?
+        <TouchableOpacity onPress={() => props.navigation.navigate('SignUp')} style={regStyle.registerRedirect}>
+          <Text style={regStyle.registerRedirectBtn}>Already have an account?
           </Text>
         </TouchableOpacity>
       </View>

@@ -53,15 +53,11 @@ const SignUpForm = props => {
           func={props.setLoginPassword}
           secureTextEntry={true}
         />
-        <TouchableOpacity style={signUpStyle.button}>
-          <Text
-            style={signUpStyle.buttonText}
-            onPress={() => props.navigation.navigate('UserPage')}>Sign Up</Text>
+        <TouchableOpacity onPress={() => props.navigation.navigate('UserPage')} style={signUpStyle.button}>
+          <Text style={signUpStyle.buttonText}>Sign Up</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={signUpStyle.signUpRedirect}>
-          <Text
-            style={signUpStyle.signUpRedirectBtn}
-            onPress={() => props.navigation.navigate('Register')}>Dont have an account?
+        <TouchableOpacity onPress={() => props.navigation.navigate('Register')} style={signUpStyle.signUpRedirect}>
+          <Text style={signUpStyle.signUpRedirectBtn}>Dont have an account?
           </Text>
         </TouchableOpacity>
       </View>
