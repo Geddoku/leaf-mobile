@@ -7,6 +7,29 @@ import {
   TouchableOpacity,
   Image
 } from 'react-native';
+import {
+  setLoginPasswordAC,
+  setLoginUsernameAC
+} from '../redux/reducers/loginReducer';
+import {connect} from 'react-redux';
+
+let stateToProps = state => {
+  return {
+    username: state.registration.username,
+    password: state.registration.password
+  }
+}
+
+let dispatchToProps = dispatch => {
+  return {
+    setLoginPassword: data => {
+      dispatch(setLoginPasswordAC(data))
+    },
+    setLoginUsername: data => {
+      dispatch(setLoginUsernameAC(data))
+    }
+  }
+}
 
 const SignUpForm = props => {
   return (
@@ -19,10 +42,21 @@ const SignUpForm = props => {
       </View>
       <View style={signUpStyle.signUpContainer}>
         <Text style={signUpStyle.header}>Sign Up</Text>
-        <TextInput style={signUpStyle.inputField} placeholder="Email" />
-        <TextInput style={signUpStyle.inputField} placeholder="Password" />
+        <TextInput
+          style={signUpStyle.inputField}
+          placeholder="Username"
+          func={props.setLoginUsername}
+        />
+        <TextInput
+          style={signUpStyle.inputField}
+          placeholder="Password"
+          func={props.setLoginPassword}
+          secureTextEntry={true}
+        />
         <TouchableOpacity style={signUpStyle.button}>
-          <Text style={signUpStyle.buttonText}>Sign Up</Text>
+          <Text
+            style={signUpStyle.buttonText}
+            onPress={() => props.navigation.navigate('UserPage')}>Sign Up</Text>
         </TouchableOpacity>
         <TouchableOpacity style={signUpStyle.signUpRedirect}>
           <Text
@@ -56,6 +90,7 @@ const signUpStyle = StyleSheet.create({
     textAlign: 'center'
   },
   inputField: {
+    color: '#fff',
     alignSelf: 'stretch',
     height: 40,
     marginBottom: 15,
@@ -93,4 +128,6 @@ const signUpStyle = StyleSheet.create({
   }
 });
 
-export default SignUpForm;
+const SignUpContainer = connect(stateToProps, dispatchToProps)(SignUpForm);
+
+export default SignUpContainer;

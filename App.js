@@ -4,27 +4,33 @@ import 'react-native-gesture-handler';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { fromLeft } from 'react-navigation-transitions';
+import { Provider } from 'react-redux';
 
 const Stack = createStackNavigator();
 
 import RegistrationScreen from './screens/RegistrationScreen';
 import SignUpScreen from './screens/SignUpScreen';
 import StartScreen from './screens/StartScreen';
+import UserPageScreen from './screens/UserPageScreen';
+import store from './redux/store';
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <NavigationContainer initialRouteName="Start">
-        <Stack.Navigator
-          screenOptions={{
-            headerShown: false
-          }}>
-          <Stack.Screen name="Start" component={StartScreen} />
-          <Stack.Screen name="Register" component={RegistrationScreen} />
-          <Stack.Screen name="SignUp" component={SignUpScreen} />
-        </Stack.Navigator>
-      </NavigationContainer>
-    </View>
+    <Provider store={store}>
+      <View style={styles.container}>
+        <NavigationContainer initialRouteName="Start">
+          <Stack.Navigator
+            screenOptions={{
+              headerShown: false
+            }}>
+            <Stack.Screen name="Start" component={StartScreen} />
+            <Stack.Screen name="Register" component={RegistrationScreen} />
+            <Stack.Screen name="SignUp" component={SignUpScreen} />
+            <Stack.Screen name="UserPage" component={UserPageScreen} />
+          </Stack.Navigator>
+        </NavigationContainer>
+      </View>
+    </Provider>
   );
 }
 

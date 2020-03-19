@@ -65,7 +65,7 @@ const startStyle = StyleSheet.create({
     textAlign: 'center'
   },
   featureText: {
-    color: '#cffffd',
+    color: '#5bcf7a',
     fontSize: 18,
     paddingBottom: 10,
     textAlign: 'center'

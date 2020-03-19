@@ -1,8 +1,14 @@
-import { createStore, applyMiddleware, compose } from 'redux';
-import thunk from 'redux-thunk';
+import { combineReducers, createStore } from 'redux';
+import { reducer as formReducer } from 'redux-form';
 
-import reducers from './rootReducer';
+import registrationReducer from './reducers/registrationReducer';
+import loginReducer from './reducers/loginReducer';
 
-const enchancer = compose(applyMiddleware(thunk));
+let reducers  = combineReducers({
+  registration: registrationReducer,
+  login: loginReducer
+});
 
-export default createStore(reducers, enchancer);
+let store = createStore(reducers);
+
+export default store;

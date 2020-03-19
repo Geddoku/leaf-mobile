@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {
   StyleSheet,
   Text,
@@ -8,6 +8,34 @@ import {
   Image
 } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
+import {
+  setPasswordAC,
+  setEmailAC,
+  setUsernameAC
+} from '../redux/reducers/registrationReducer';
+import {connect} from 'react-redux';
+
+let stateToProps = state => {
+  return {
+    username: state.registration.username,
+    password: state.registration.password,
+    login: state.registration.login
+  }
+}
+
+let dispatchToProps = dispatch => {
+  return {
+    setUsername: data => {
+      dispatch(setUsernameAC(data))
+    },
+    setEmail: data => {
+      dispatch(setEmailAC(data))
+    },
+    setPassword: data => {
+      dispatch(setPasswordAC(data))
+    }
+  }
+}
 
 const RegistrationForm = props => {
   return (
@@ -20,10 +48,23 @@ const RegistrationForm = props => {
       </View>
       <View style={regStyle.regContainer}>
         <Text style={regStyle.header}>Registration in Leaf</Text>
-        <TextInput style={regStyle.inputField} placeholder="Username" />
-        <TextInput style={regStyle.inputField} placeholder="Email" />
-        <TextInput style={regStyle.inputField} placeholder="Password" />
-        <TouchableOpacity style={regStyle.button}>
+        <TextInput
+          func={props.setUsername}
+          placeholder="Username"
+          style={regStyle.inputField}
+        />
+        <TextInput
+          func={props.setEmail}
+          placeholder="Email"
+          style={regStyle.inputField}
+        />
+        <TextInput
+          func={props.setPassword}
+          placeholder="Password"
+          secureTextEntry={true}
+          style={regStyle.inputField}
+        />
+        <TouchableOpacity data={{name:props.name, email:props.email, password: props.password}} style={regStyle.button}>
           <Text style={regStyle.buttonText}>Register</Text>
         </TouchableOpacity>
         <TouchableOpacity style={regStyle.registerRedirect}>
@@ -58,6 +99,7 @@ const regStyle = StyleSheet.create({
     textAlign: 'center'
   },
   inputField: {
+    color: '#fff',
     alignSelf: 'stretch',
     height: 40,
     marginBottom: 15,
@@ -95,4 +137,6 @@ const regStyle = StyleSheet.create({
   }
 });
 
-export default RegistrationForm;
+const RegistrationContainer = connect(stateToProps, dispatchToProps)(RegistrationForm);
+
+export default RegistrationContainer;
