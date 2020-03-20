@@ -5,52 +5,35 @@ import {
   View,
   TextInput,
   TouchableOpacity,
-  Image
+  Image,
+  SafeAreaView,
+  ScrollView
 } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { MaterialCommunityIcons } from 'react-native-vector-icons';
+import { createDrawerNavigator, DrawerItems } from '@react-navigation/drawer';
 
 const Tab = createBottomTabNavigator();
+const Drawer = createDrawerNavigator();
 
-import CoursesScreen from './studentComponents/courses';
-import ProfileScreen from './studentComponents/studentProfile';
-import StreamsScreen from './studentComponents/streams';
+import TabNavigationStudent from '../screens/studentScreens/TabNavigationStudent';
+import TabNavigationTeacher from '../screens/teacherScreens/TabNavigationTeacher';
 
-const UserPage = props => {
+const UserPageNavigation = props => {
   return (
-      <Tab.Navigator
-        tabBarOptions={{
-          activeTintColor: '#03d100'
-        }}
-      >
-        <Tab.Screen
-          name="Courses"
-          component={CoursesScreen}
-          options={{
-            tabBarIcon: ({ color, size }) => (
-              <MaterialCommunityIcons name="book-open-page-variant" color={color} size={size} />
-            )
-          }}
-        />
-        <Tab.Screen
-          name="Profile"
-          component={ProfileScreen}
-          options={{
-            tabBarIcon: ({ color, size }) => (
-              <MaterialCommunityIcons name="account-circle" color={color} size={size} />
-            )
-          }}
-        />
-        <Tab.Screen
-          name="Streams"
-          component={StreamsScreen}
-          options={{
-            tabBarIcon: ({ color, size }) => (
-              <MaterialCommunityIcons name="camera" color={color} size={size} />
-            )
-          }}
-        />
-      </Tab.Navigator>
+    <Drawer.Navigator
+      initialRouteName="Student"
+      drawerContentOptions={{
+        activeTintColor: '#03d100'
+      }}
+      drawerStyle={{
+        width: 250,
+        backgroundColor: '#f0f0f0'
+      }}
+    >
+      <Drawer.Screen name="Student" component={TabNavigationStudent} />
+      <Drawer.Screen name="Teacher" component={TabNavigationTeacher} />
+    </Drawer.Navigator>
   );
 }
 
@@ -84,4 +67,4 @@ const style = StyleSheet.create({
   }
 });
 
-export default UserPage;
+export default UserPageNavigation;

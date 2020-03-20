@@ -6,7 +6,7 @@ import {
   TouchableOpacity
 } from 'react-native';
 
-const StudentProfile = props => {
+const profile = props => {
   return (
     <View style={style.container}>
       <TouchableOpacity onPress={() => props.navigation.navigate('Start')}>
@@ -28,4 +28,4 @@ const style = StyleSheet.create({
   }
 });
 
-export default StudentProfile;
+export default profile;
