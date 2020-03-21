@@ -98,7 +98,8 @@ const signUpStyle = StyleSheet.create({
     alignItems: 'center',
     marginTop: 20,
     padding: 15,
-    backgroundColor: '#03d100'
+    backgroundColor: '#03d100',
+    borderRadius: 30
   },
   buttonText: {
     fontWeight: 'bold'

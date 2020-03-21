@@ -82,7 +82,8 @@ const startStyle = StyleSheet.create({
     alignItems: 'center',
     padding: 15,
     backgroundColor: '#03d100',
-    marginTop: 20
+    marginTop: 20,
+    borderRadius: 30
   },
   buttonText: {
     fontWeight: 'bold'
