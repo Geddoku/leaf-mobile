@@ -11,6 +11,7 @@ import {
   TouchableNativeFeedback
 } from 'react-native';
 import { MaterialCommunityIcons } from 'react-native-vector-icons';
+import { SearchBar } from 'react-native-elements';
 
 const COURSES_DATA = [
   {
@@ -145,7 +146,7 @@ function MoreButton(props) {
                         </View>
                       </View>
                       <View style={style.authorContainer}>
-                        <View style={{borderWidth: 0.2, borderColor: 'black'}}></View>
+                        <View style={{borderWidth: 0.3, borderColor: 'black'}}></View>
                           <View style={style.authorInner}>
                             <View>
                               <Image source={{uri: `${props.authorImg}`}} style={style.authorImage} />
@@ -155,7 +156,7 @@ function MoreButton(props) {
                               <Text style={style.aboutAuthor}>{props.aboutAuthor}</Text>
                             </View>
                           </View>
-                        <View style={{borderWidth: 0.3, borderColor: 'black'}}></View>
+                        <View style={{borderWidth: 0.2, borderColor: 'black'}}></View>
                       </View>
                     </View>
                     <View style={style.modalContentContainer}>
@@ -224,8 +225,14 @@ function MoreButton(props) {
 }
 
 const Courses = props => {
+  const [value, onChangeText] = React.useState('Find Course');
   return (
     <SafeAreaView style={style.container}>
+      <SearchBar
+        inputContainerStyle={style.SearchBarStyle}
+        onChangeText={text => onChangeText(text)}
+        value={value}
+      />
       <FlatList
       style={style.listContainer}
         data={COURSES_DATA}
@@ -256,7 +263,7 @@ const style = StyleSheet.create({
     flex: 1
   },
   listContainer: {
-    marginTop: 50
+    marginTop: 10
   },
   item: {
     marginTop: 15,
@@ -420,6 +427,9 @@ const style = StyleSheet.create({
   courseTitle: {
     fontSize: 24,
     fontWeight: 'bold'
+  },
+  SearchBarStyle: {
+    marginTop: 30
   }
 });
 

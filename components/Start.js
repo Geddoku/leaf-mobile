@@ -5,8 +5,10 @@ import {
   View,
   TextInput,
   TouchableOpacity,
-  Image
+  Image,
+  Linking
 } from 'react-native';
+import { SocialIcon } from 'react-native-elements';
 
 const Start = props => {
   return (
@@ -34,6 +36,28 @@ const Start = props => {
               style={startStyle.button}>
             <Text style={startStyle.redirectBtn}> Login to the account </Text>
           </TouchableOpacity>
+          <View style={startStyle.socialIconsContainer}>
+            <TouchableOpacity
+              style={{ width: 70, height: 70}}
+              onPress={() => { Linking.openURL('https://bit.ly/2WCAgib')}}>
+              <SocialIcon type='github' />
+            </TouchableOpacity>
+            <TouchableOpacity
+              style={{ width: 70, height: 70}}
+              onPress={() => { Linking.openURL('https://facebook.com')}}>
+              <SocialIcon type='facebook' />
+            </TouchableOpacity>
+            <TouchableOpacity
+              style={{ width: 70, height: 70}}
+              onPress={() => { Linking.openURL('https://twitter.com')}}>
+              <SocialIcon type='twitter' />
+            </TouchableOpacity>
+            <TouchableOpacity
+              style={{ width: 70, height: 70}}
+              onPress={() => { Linking.openURL('https://youtube.com')}}>
+              <SocialIcon type='youtube' />
+            </TouchableOpacity>
+          </View>
         </View>
       </View>
     </View>
@@ -109,6 +133,12 @@ const startStyle = StyleSheet.create({
   },
   btnWrapper: {
     marginTop: 30
+  },
+  socialIconsContainer: {
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    marginTop: 25
   }
 });
 
