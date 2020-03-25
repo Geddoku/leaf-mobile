@@ -8,34 +8,7 @@ import {
   Image
 } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
-import {
-  setPasswordAC,
-  setEmailAC,
-  setUsernameAC
-} from '../redux/reducers/registrationReducer';
-import {connect} from 'react-redux';
-
-let stateToProps = state => {
-  return {
-    username: state.registration.username,
-    password: state.registration.password,
-    login: state.registration.login
-  }
-}
-
-let dispatchToProps = dispatch => {
-  return {
-    setUsername: data => {
-      dispatch(setUsernameAC(data))
-    },
-    setEmail: data => {
-      dispatch(setEmailAC(data))
-    },
-    setPassword: data => {
-      dispatch(setPasswordAC(data))
-    }
-  }
-}
+import { FormLabel, FormInput, FormValidationMessage } from 'react-native-elements';
 
 const RegistrationForm = props => {
   return (
@@ -49,22 +22,19 @@ const RegistrationForm = props => {
       <View style={regStyle.regContainer}>
         <Text style={regStyle.header}>Registration in Leaf</Text>
         <TextInput
-          func={props.setUsername}
           placeholder="Username"
           style={regStyle.inputField}
         />
         <TextInput
-          func={props.setEmail}
           placeholder="Email"
           style={regStyle.inputField}
         />
         <TextInput
-          func={props.setPassword}
           placeholder="Password"
           secureTextEntry={true}
           style={regStyle.inputField}
         />
-        <TouchableOpacity data={{name:props.name, email:props.email, password: props.password}} style={regStyle.button}>
+        <TouchableOpacity style={regStyle.button}>
           <Text style={regStyle.buttonText}>Register</Text>
         </TouchableOpacity>
         <TouchableOpacity onPress={() => props.navigation.navigate('SignUp')} style={regStyle.registerRedirect}>
@@ -136,6 +106,4 @@ const regStyle = StyleSheet.create({
   }
 });
 
-const RegistrationContainer = connect(stateToProps, dispatchToProps)(RegistrationForm);
-
-export default RegistrationContainer;
+export default RegistrationForm;

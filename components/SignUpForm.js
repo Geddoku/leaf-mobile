@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {
   StyleSheet,
   Text,
@@ -7,29 +7,6 @@ import {
   TouchableOpacity,
   Image
 } from 'react-native';
-import {
-  setLoginPasswordAC,
-  setLoginUsernameAC
-} from '../redux/reducers/loginReducer';
-import {connect} from 'react-redux';
-
-let stateToProps = state => {
-  return {
-    username: state.registration.username,
-    password: state.registration.password
-  }
-}
-
-let dispatchToProps = dispatch => {
-  return {
-    setLoginPassword: data => {
-      dispatch(setLoginPasswordAC(data))
-    },
-    setLoginUsername: data => {
-      dispatch(setLoginUsernameAC(data))
-    }
-  }
-}
 
 const SignUpForm = props => {
   return (
@@ -41,16 +18,14 @@ const SignUpForm = props => {
         />
       </View>
       <View style={signUpStyle.signUpContainer}>
-        <Text style={signUpStyle.header}>Sign Up</Text>
+        <Text style={signUpStyle.header}>Sign In</Text>
         <TextInput
           style={signUpStyle.inputField}
           placeholder="Username"
-          func={props.setLoginUsername}
         />
         <TextInput
           style={signUpStyle.inputField}
           placeholder="Password"
-          func={props.setLoginPassword}
           secureTextEntry={true}
         />
         <TouchableOpacity onPress={() => props.navigation.navigate('UserPage')} style={signUpStyle.button}>
@@ -125,6 +100,4 @@ const signUpStyle = StyleSheet.create({
   }
 });
 
-const SignUpContainer = connect(stateToProps, dispatchToProps)(SignUpForm);
-
-export default SignUpContainer;
+export default SignUpForm;
