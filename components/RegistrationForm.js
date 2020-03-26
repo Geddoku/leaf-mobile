@@ -5,12 +5,51 @@ import {
   View,
   TextInput,
   TouchableOpacity,
-  Image
+  Image,
+  AsyncStorage
 } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { FormLabel, FormInput, FormValidationMessage } from 'react-native-elements';
 
 const RegistrationForm = props => {
+
+  const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
+  const _storeUserData = async (userName, data) => {
+    try {
+      await AsyncStorage.setItem(userName, JSON.stringify(data));
+    } catch (error) {}
+  }
+
+  const _getUserData = async (userName) => {
+    try {
+      const value = await AsyncStorage.getItem(userName);
+      const item = JSON.parse(value);
+      console.log(item);
+      console.log(value);
+    } catch (error) {}
+  }
+
+  function handleUserInput() {
+    let USER_DATA = {
+      username: '',
+      email: '',
+      password: ''
+    }
+
+    USER_DATA.username = username;
+    USER_DATA.email = email;
+    USER_DATA.password = password;
+
+    _storeUserData(username, USER_DATA);
+  }
+
+  function handleUserLogin() {
+    _getUserData(username);
+  }
+
   return (
     <View style={regStyle.container}>
       <View style={regStyle.imageWrapper}>
@@ -23,19 +62,29 @@ const RegistrationForm = props => {
         <Text style={regStyle.header}>Registration in Leaf</Text>
         <TextInput
           placeholder="Username"
+          onChangeText={(text) => setUsername(text)}
           style={regStyle.inputField}
         />
         <TextInput
           placeholder="Email"
+          onChangeText={(text) => setEmail(text)}
           style={regStyle.inputField}
         />
         <TextInput
           placeholder="Password"
+          onChangeText={(text) => setPassword(text)}
           secureTextEntry={true}
           style={regStyle.inputField}
         />
-        <TouchableOpacity style={regStyle.button}>
+        <TouchableOpacity
+          style={regStyle.button}
+          onPress={() => handleUserInput()}>
           <Text style={regStyle.buttonText}>Register</Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={regStyle.button}
+          onPress={() => handleUserLogin()}>
+          <Text style={regStyle.buttonText}>Get User</Text>
         </TouchableOpacity>
         <TouchableOpacity onPress={() => props.navigation.navigate('SignUp')} style={regStyle.registerRedirect}>
           <Text style={regStyle.registerRedirectBtn}>Already have an account?

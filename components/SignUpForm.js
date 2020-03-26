@@ -5,10 +5,37 @@ import {
   View,
   TextInput,
   TouchableOpacity,
-  Image
+  Image,
+  AsyncStorage
 } from 'react-native';
 
 const SignUpForm = props => {
+
+  const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
+  const _getUserData = async (userName) => {
+    try {
+      const value = await AsyncStorage.getItem(userName);
+      const item = JSON.parse(value);
+      console.log(item);
+      if (item.username === userName && item.password === password) {
+        alert('Access provided!\nRedirecting to an account.');
+        props.navigation.navigate('UserPage', {
+          mode: 'Student'
+        });
+        return item;
+      } else {
+        alert('Access denied!\nUsername or password incorrect.');
+      }
+    } catch (error) {}
+  }
+
+  function handleUserLogin() {
+    _getUserData(username);
+  }
+
   return (
     <View style={signUpStyle.container}>
       <View style={signUpStyle.imageWrapper}>
@@ -22,13 +49,17 @@ const SignUpForm = props => {
         <TextInput
           style={signUpStyle.inputField}
           placeholder="Username"
+          onChangeText={(text) => setUsername(text)}
         />
         <TextInput
           style={signUpStyle.inputField}
           placeholder="Password"
+          onChangeText={(text) => setPassword(text)}
           secureTextEntry={true}
         />
-        <TouchableOpacity onPress={() => props.navigation.navigate('UserPage')} style={signUpStyle.button}>
+        <TouchableOpacity
+          style={signUpStyle.button}
+          onPress={() => handleUserLogin()}>
           <Text style={signUpStyle.buttonText}>Sign Up</Text>
         </TouchableOpacity>
         <TouchableOpacity onPress={() => props.navigation.navigate('Register')} style={signUpStyle.signUpRedirect}>

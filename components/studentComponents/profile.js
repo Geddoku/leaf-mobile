@@ -32,7 +32,7 @@ const profile = props => {
         color='white'
         />
         <Text style={{fontSize: 18, color: '#9c9c9c'}}> Leaf Student
-        <Text style={{color: '#e6e6e6'}}> {AUTH_USER.username}</Text></Text>
+        <Text style={{color: '#e6e6e6'}}></Text></Text>
       </View>
       <View>
         <Avatar
