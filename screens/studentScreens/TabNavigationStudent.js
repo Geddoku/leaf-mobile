@@ -1,18 +1,22 @@
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { MaterialCommunityIcons } from 'react-native-vector-icons';
+import {
+  TouchableOpacity
+} from 'react-native';
 
 const Tab = createBottomTabNavigator();
 
-import Courses from '../../components/studentComponents/courses';
-import Streams from '../../components/studentComponents/streams';
-import StudentProfile from '../../components/studentComponents/profile';
+import Courses from './CourseScreen';
+import Streams from './StreamScreen';
+import StudentProfile from './ProfileScreen';
 
-const TabNavigationStudent = props => {
+export default function TabNavigationStudent({ route, navigation }) { 
   return (
     <Tab.Navigator
       tabBarOptions={{
-        activeTintColor: '#03d100'
+        activeTintColor: '#03d100',
+        showLabel: false
       }}
     >
       <Tab.Screen
@@ -45,5 +49,3 @@ const TabNavigationStudent = props => {
     </Tab.Navigator>
   );
 }
-
-export default TabNavigationStudent;

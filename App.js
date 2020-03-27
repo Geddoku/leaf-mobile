@@ -12,6 +12,11 @@ import RegistrationScreen from './screens/RegistrationScreen';
 import SignUpScreen from './screens/SignUpScreen';
 import StartScreen from './screens/StartScreen';
 import UserPageScreen from './screens/UserPageScreen';
+import TabNavStud from './screens/studentScreens/TabNavigationStudent';
+import CoursesScreen from './screens/studentScreens/CourseScreen';
+import ProfileScreen from './screens/studentScreens/ProfileScreen';
+import StreamScreen from './screens/studentScreens/StreamScreen';
+
 import store from './redux/store';
 
 export default function App() {

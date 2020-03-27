@@ -4,7 +4,8 @@ import {
   Text,
   StyleSheet,
   TouchableOpacity,
-  TextInput
+  TextInput,
+  AsyncStorage
 } from 'react-native';
 import { Avatar, Icon } from 'react-native-elements';
 
@@ -17,9 +18,8 @@ const AUTH_USER = {
   interests: ['Math, ', 'Computer Science, ', 'Geometry']
 }
 
-const profile = props => {
+export default function ProfileNav({ route, navigation }) {
 
-  const [name, setName] = useState(AUTH_USER.username);
   const [knowledge, setKnowledge] = useState(AUTH_USER.education);
   const [age, setAge] = useState(`${AUTH_USER.age}`);
   const [interest, setInterest] = useState(AUTH_USER.interests);
@@ -32,7 +32,7 @@ const profile = props => {
         color='white'
         />
         <Text style={{fontSize: 18, color: '#9c9c9c'}}> Leaf Student
-        <Text style={{color: '#e6e6e6'}}></Text></Text>
+        <Text style={{color: '#e6e6e6'}}> {AUTH_USER.username}</Text></Text>
       </View>
       <View>
         <Avatar
@@ -58,7 +58,7 @@ const profile = props => {
             <Text style={style.profileTextProfile}>Education</Text>
             <TextInput
               style={style.profileTextChanged}
-              value={knowledge}
+              value={AUTH_USER.education}
               setKnowledge={text => setKnowledge(text)}
             />
           </View>
@@ -78,7 +78,7 @@ const profile = props => {
       </View>
       <TouchableOpacity
         style={{marginBottom: 30}}
-        onPress={() => props.navigation.navigate('Start')}>
+        onPress={() => navigation.navigate('Start')}>
         <Text
           style={{ color: '#fff' }}>
           Log Out
@@ -97,8 +97,9 @@ const style = StyleSheet.create({
   },
   profile: {
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center'
+    alignItems: 'baseline',
+    justifyContent: 'space-around',
+    width: '80%'
   },
   profileText: {
     color: '#bababa',
@@ -114,5 +115,3 @@ const style = StyleSheet.create({
     color: '#ebebeb'
   }
 });
-
-export default profile;

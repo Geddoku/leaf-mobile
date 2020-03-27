@@ -224,7 +224,7 @@ function MoreButton(props) {
   );
 }
 
-const Courses = props => {
+export default function CourseNav({ route, navigation }) {
   const [value, onChangeText] = React.useState('Find Course');
   return (
     <SafeAreaView style={style.container}>
@@ -432,5 +432,3 @@ const style = StyleSheet.create({
     marginTop: 30
   }
 });
-
-export default Courses;
