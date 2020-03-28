@@ -75,7 +75,7 @@ const COURSES_DATA = [
 
 function Item(
     { title, author, content, src, modalContent, price, rating, members,
-    lessons, aboutAuthor, authorImg, lessonsArray  }) {
+    lessons, aboutAuthor, authorImg, lessonsArray, navigation  }) {
   return (
     <View style={style.item}>
       <Image source={{uri: `${src}`}} style={style.image} />
@@ -93,6 +93,7 @@ function Item(
         aboutAuthor={aboutAuthor}
         authorImg={authorImg}
         lessonsArray={lessonsArray}
+        navigation={navigation}
       />
     </View>
   );
@@ -190,7 +191,8 @@ function MoreButton(props) {
                     </View>
                     <View style={style.startBtn}>
                       <TouchableNativeFeedback onPress={() => {
-                          setModal(!modalOpen)
+                        props.navigation.navigate('StartedCourse', { title: props.title });
+                        setModal(!modalOpen)
                       }}>
                         <View style={style.startInner}>
                             <Text style={style.startCourse}>Start Course</Text>
@@ -232,6 +234,7 @@ export default function CourseNav({ route, navigation }) {
         inputContainerStyle={style.SearchBarStyle}
         onChangeText={text => onChangeText(text)}
         value={value}
+        containerStyle={style.search}
       />
       <FlatList
       style={style.listContainer}
@@ -250,6 +253,7 @@ export default function CourseNav({ route, navigation }) {
           aboutAuthor={item.aboutAuthor}
           authorImg={item.authorImg}
           lessonsArray={item.lessonsArray}
+          navigation={navigation}
         />}
         keyExtractor={item => item.id}
       />
@@ -259,15 +263,12 @@ export default function CourseNav({ route, navigation }) {
 
 const style = StyleSheet.create({
   container: {
-    backgroundColor: '#252729',
+    backgroundColor: 'black',
     flex: 1
-  },
-  listContainer: {
-    marginTop: 10
   },
   item: {
     marginTop: 15,
-    backgroundColor: '#fcfcfc',
+    backgroundColor: '#171717',
     padding: 20,
     marginVertical: 8,
     marginHorizontal: 16,
@@ -277,12 +278,13 @@ const style = StyleSheet.create({
     marginTop: 5,
     marginBottom: 5,
     fontSize: 24,
-    fontWeight: 'bold'
+    fontWeight: 'bold',
+    color: 'white'
   },
   author: {
     fontSize: 16,
     marginBottom: 5,
-    color: '#363636'
+    color: '#ff1e56'
   },
   image: {
     width: 320,
@@ -304,7 +306,7 @@ const style = StyleSheet.create({
     marginTop: 15,
     width: 100,
     height: 40,
-    backgroundColor: '#ededed',
+    backgroundColor: '#ff1e56',
     borderRadius: 5,
     alignItems: 'center',
     justifyContent: 'center'
@@ -335,6 +337,7 @@ const style = StyleSheet.create({
       textAlign: 'center',
       textAlignVertical: 'center',
       fontSize: 16,
+      color: 'white'
   },
   modalText: {
       fontSize: 16,
@@ -343,6 +346,7 @@ const style = StyleSheet.create({
   modal: {
       paddingVertical: '10%',
       paddingHorizontal: '5%',
+      backgroundColor: 'black'
   },
   modalTitle:{
       fontWeight: 'bold',
@@ -350,10 +354,10 @@ const style = StyleSheet.create({
       textAlign: 'center',
       marginTop: 30,
       marginBottom: 10,
-      color: '#333333'
+      color: 'white'
   },
   modalAuthor:{
-      color: '#363636',
+      color: 'white',
       fontSize: 18,
       marginTop: 20
   },
@@ -378,7 +382,7 @@ const style = StyleSheet.create({
   priceContainer: {
     width: 70,
     height: 25,
-    backgroundColor: '#71eba0',
+    backgroundColor: '#ff1e56',
     borderRadius: 20,
     marginBottom: 30
   },
@@ -394,7 +398,8 @@ const style = StyleSheet.create({
   },
   courseAboutCounts: {
     fontWeight: 'bold',
-    fontSize: 20
+    fontSize: 20,
+    color: 'white'
   },
   courseAbout: {
     fontSize: 16,
@@ -406,7 +411,7 @@ const style = StyleSheet.create({
     borderRadius: 30,
     justifyContent: 'center',
     alignContent: 'center',
-    backgroundColor: '#71eba0'
+    backgroundColor: '#ff1e56'
   },
   startCourse: {
     textAlign: 'center',
@@ -420,15 +425,23 @@ const style = StyleSheet.create({
     marginTop: '15%'
   },
   courseId: {
-    color: '#9c9c9c',
+    color: 'white',
     fontSize: 24,
     marginRight: 25
   },
   courseTitle: {
     fontSize: 24,
-    fontWeight: 'bold'
+    fontWeight: 'bold',
+    color: 'white'
   },
   SearchBarStyle: {
     marginTop: 30
+  },
+  content: {
+    color: '#f5f5f5'
+  },
+  search: {
+    backgroundColor: 'black',
+    padding: 15
   }
 });

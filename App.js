@@ -16,12 +16,10 @@ import TabNavStud from './screens/studentScreens/TabNavigationStudent';
 import CoursesScreen from './screens/studentScreens/CourseScreen';
 import ProfileScreen from './screens/studentScreens/ProfileScreen';
 import StreamScreen from './screens/studentScreens/StreamScreen';
-
-import store from './redux/store';
+import StartedCourseScreen from './screens/studentScreens/StartedCourseScreen';
 
 export default function App() {
   return (
-    <Provider store={store}>
       <View style={styles.container}>
         <NavigationContainer initialRouteName="Start">
           <Stack.Navigator
@@ -32,10 +30,10 @@ export default function App() {
             <Stack.Screen name="Register" component={RegistrationScreen} />
             <Stack.Screen name="SignUp" component={SignUpScreen} />
             <Stack.Screen name="UserPage" component={UserPageScreen} />
+            <Stack.Screen name="StartedCourse" component={StartedCourseScreen} />
           </Stack.Navigator>
         </NavigationContainer>
       </View>
-    </Provider>
   );
 }
 

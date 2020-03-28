@@ -75,7 +75,7 @@ const signUpStyle = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
-    backgroundColor: '#252729',
+    backgroundColor: 'black',
     paddingLeft: 50,
     paddingRight: 50
   },

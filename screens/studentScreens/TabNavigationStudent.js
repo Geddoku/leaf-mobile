@@ -11,11 +11,11 @@ import Courses from './CourseScreen';
 import Streams from './StreamScreen';
 import StudentProfile from './ProfileScreen';
 
-export default function TabNavigationStudent({ route, navigation }) { 
+export default function TabNavigationStudent({ route, navigation }) {
   return (
     <Tab.Navigator
       tabBarOptions={{
-        activeTintColor: '#03d100',
+        activeTintColor: '#ff1e56',
         showLabel: false
       }}
     >

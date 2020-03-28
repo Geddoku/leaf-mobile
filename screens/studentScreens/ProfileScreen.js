@@ -90,7 +90,7 @@ export default function ProfileNav({ route, navigation }) {
 
 const style = StyleSheet.create({
   container: {
-    backgroundColor: '#252729',
+    backgroundColor: 'black',
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center'
@@ -109,7 +109,7 @@ const style = StyleSheet.create({
     color: 'white'
   },
   profileTextProfile: {
-    color: '#5fde45'
+    color: '#ff1e56'
   },
   profileTextInterest: {
     color: '#ebebeb'

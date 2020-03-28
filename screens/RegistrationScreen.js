@@ -83,12 +83,7 @@ export default function RegistrationScreen({ route, navigation }) {
             onPress={() => handleUserInput()}>
             <Text style={regStyle.buttonText}>Register</Text>
           </TouchableOpacity>
-          <TouchableOpacity
-            style={regStyle.button}
-            onPress={() => handleUserLogin()}>
-            <Text style={regStyle.buttonText}>Get User</Text>
-          </TouchableOpacity>
-          <TouchableOpacity onPress={() => props.navigation.navigate('SignUp')} style={regStyle.registerRedirect}>
+          <TouchableOpacity onPress={() => navigation.navigate('SignUp')} style={regStyle.registerRedirect}>
             <Text style={regStyle.registerRedirectBtn}>Already have an account?
             </Text>
           </TouchableOpacity>
@@ -101,7 +96,7 @@ const regStyle = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
-    backgroundColor: '#252729',
+    backgroundColor: 'black',
     paddingLeft: 50,
     paddingRight: 50
   },
@@ -130,16 +125,17 @@ const regStyle = StyleSheet.create({
     alignItems: 'center',
     marginTop: 20,
     padding: 15,
-    backgroundColor: '#03d100',
+    backgroundColor: '#ff1e56',
     borderRadius: 30
   },
   buttonText: {
-    fontWeight: 'bold'
+    fontWeight: 'bold',
+    color: 'white'
   },
   imageIcon: {
     width: 100,
     height: 100,
-    tintColor: '#03d100'
+    tintColor: '#ff1e56'
   },
   imageWrapper: {
     justifyContent: 'center',

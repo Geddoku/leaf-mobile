@@ -22,7 +22,7 @@ const Start = props => {
       <View style={startStyle.signUpContainer}>
         <Text style={startStyle.header}>Welcome to Leaf</Text>
         <Text style={startStyle.outerHeader}>Education of future</Text>
-        <Text style={startStyle.featureText}>ABSOLUTELY FREE</Text>
+        <Text style={startStyle.featureText}>TEAM OF PROFESSIONALISTS</Text>
         <Text style={startStyle.featureText}>SHARE YOUR EXPERIENCE</Text>
         <Text style={startStyle.featureText}>INTRODUCING BREAKTHROUGH APPLICATION</Text>
         <View style={startStyle.btnWrapper}>
@@ -40,22 +40,22 @@ const Start = props => {
             <TouchableOpacity
               style={{ width: 70, height: 70}}
               onPress={() => { Linking.openURL('https://bit.ly/2WCAgib')}}>
-              <SocialIcon type='github' />
+              <SocialIcon style={{backgroundColor: '#ff1e56'}} type='github' />
             </TouchableOpacity>
             <TouchableOpacity
               style={{ width: 70, height: 70}}
               onPress={() => { Linking.openURL('https://facebook.com')}}>
-              <SocialIcon type='facebook' />
+              <SocialIcon style={{backgroundColor: '#ff1e56'}} type='facebook' />
             </TouchableOpacity>
             <TouchableOpacity
               style={{ width: 70, height: 70}}
               onPress={() => { Linking.openURL('https://twitter.com')}}>
-              <SocialIcon type='twitter' />
+              <SocialIcon style={{backgroundColor: '#ff1e56'}} type='twitter' />
             </TouchableOpacity>
             <TouchableOpacity
               style={{ width: 70, height: 70}}
               onPress={() => { Linking.openURL('https://youtube.com')}}>
-              <SocialIcon type='youtube' />
+              <SocialIcon style={{backgroundColor: '#ff1e56'}} type='youtube' />
             </TouchableOpacity>
           </View>
         </View>
@@ -68,7 +68,7 @@ const startStyle = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
-    backgroundColor: '#252729',
+    backgroundColor: 'black',
     paddingLeft: 50,
     paddingRight: 50
   },
@@ -89,7 +89,7 @@ const startStyle = StyleSheet.create({
     textAlign: 'center'
   },
   featureText: {
-    color: '#5bcf7a',
+    color: '#ff1e56',
     fontSize: 18,
     paddingBottom: 10,
     textAlign: 'center'
@@ -105,7 +105,7 @@ const startStyle = StyleSheet.create({
     alignSelf: 'stretch',
     alignItems: 'center',
     padding: 15,
-    backgroundColor: '#03d100',
+    backgroundColor: '#ff1e56',
     marginTop: 20,
     borderRadius: 30
   },
@@ -115,7 +115,7 @@ const startStyle = StyleSheet.create({
   imageIcon: {
     width: 100,
     height: 100,
-    tintColor: '#03d100'
+    tintColor: '#ff1e56'
   },
   imageWrapper: {
     justifyContent: 'center',
@@ -129,7 +129,7 @@ const startStyle = StyleSheet.create({
   },
   redirectBtn: {
     fontWeight: 'bold',
-    color: '#262626'
+    color: 'white'
   },
   btnWrapper: {
     marginTop: 30
